@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Configuration
-@Profile("!test")
+@Profile("dev")
 public class LoadData {
     @Bean
     CommandLineRunner initData (TravelRepository repo){
