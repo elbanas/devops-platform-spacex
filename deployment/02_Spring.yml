@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spacex-app
+  labels:
+    app: spacex-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spacex-app
+  template:
+    metadata:
+      labels:
+        app: spacex-app
+    spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: busybox
+          command: ['sh', '-c', 'until nc -z postgres-service 5432; do echo waiting for postgres; sleep 2; done']
+      containers:
+        - name: spacex-container
+          image: androgeek/spacex:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spacex-service
+spec:
+  selector:
+    app: spacex-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30080
+  type: NodePort
+
