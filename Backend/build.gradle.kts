@@ -18,6 +18,9 @@ repositories {
 }
 
 dependencies {
+	implementation("io.micrometer:micrometer-registry-prometheus")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+  implementation("io.micrometer:micrometer-registry-prometheus")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa") // makes life easier (don't wanna write SQL commands)
 	runtimeOnly("com.h2database:h2") // at first i will stick to an in memory database
   runtimeOnly("org.postgresql:postgresql")
