@@ -23,9 +23,9 @@ spec:
           image: androgeek/spacex:latest
           ports:
             - containerPort: 8080
- #         env:
- #           - name: SPRING_PROFILES_ACTIVE
- #             value: production
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
 ---
 apiVersion: v1
 kind: Service
