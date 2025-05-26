@@ -59,7 +59,7 @@ public class LoadData {
             f21date = cal.getTime();
             cal.add(Calendar.DAY_OF_MONTH, 19);
             f22date = cal.getTime();
-            repo.save(new Travel("TRR", "SAT", f21date, f22date, 45000L));   // started and not ended
+            repo.save(new Travel("SAT", "TRR", f21date, f22date, 45000L));   // started and not ended
 
             // future flight
             cal.setTime(new Date());
